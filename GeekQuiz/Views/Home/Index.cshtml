@@ -1,0 +1,14 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+
+<div ng-app="QuizApp" ng-controller="QuizCtrl">
+	<div class="back" ng-class="{flip:answered}">
+		<p>{{answer}}</p>
+		<p><button>Next Question</button></p>
+	</div>
+	<div class="front" ng-class="{flip:answered}">
+		{{title}}
+	</div>
+
+</div>
