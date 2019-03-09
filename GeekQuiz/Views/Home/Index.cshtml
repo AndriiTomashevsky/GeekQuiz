@@ -2,13 +2,24 @@
 	ViewBag.Title = "Home Page";
 }
 
-<div ng-app="QuizApp" ng-controller="QuizCtrl">
+<div ng-app="QuizApp" ng-controller="QuizCtrl" ng-init="nextQuestion()">
+
 	<div class="back" ng-class="{flip:answered}">
-		<p>{{answer}}</p>
-		<p><button>Next Question</button></p>
+		<p>{{answer()}}</p>
+		<button ng-click="nextQuestion()">Next question</button>
 	</div>
+
+
 	<div class="front" ng-class="{flip:answered}">
-		{{title}}
+		<p>{{title}}</p>
+		<button ng-repeat="option in options" ng-click="sendAnswer(option)" ng-disabled="working">
+			{{option.title}}
+		</button>
 	</div>
 
 </div>
+
+@section scripts{
+	@Scripts.Render("~/Scripts/angular.js");
+	@Scripts.Render("~/Scripts/app/quiz-controller.js");
+}
